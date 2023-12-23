@@ -1,0 +1,13 @@
+{
+	"name": "Rheolaeth",
+	"author": "nthnn",
+	"git": "https://github.com/nthnn/Rheolaeth",
+	"scripts": {
+		"build": [
+			"bal build"
+		],
+		"rheo": [
+			"bal run"
+		]
+	}
+}
