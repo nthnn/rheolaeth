@@ -8,8 +8,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Install OpenJDK
+        run: sudo apt install openjdk
+
       - name: Install Ballerina
-        run: wget -qO- https://dist.ballerina.io/downloads/2201.8.4/ballerina-2201.8.4-swan-lake-linux-x64.deb | sudo dpkg --install ballerina-2201.8.4-swan-lake-linux-x64.deb && rm ballerina-2201.8.4-swan-lake-linux-x64.deb
+        run: wget https://dist.ballerina.io/downloads/2201.8.4/ballerina-2201.8.4-swan-lake-linux-x64.deb | sudo dpkg --install ballerina-2201.8.4-swan-lake-linux-x64.deb && rm ballerina-2201.8.4-swan-lake-linux-x64.deb
 
       - name: Ballerina project build
         run: cd puppet && bal build
