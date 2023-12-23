@@ -8,6 +8,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Ballerina Build
+      - name: Install Ballerina
         uses: ballerina-platform/ballerina-action@master
+
+      - name: Ballerina project build
         run: cd puppet && bal build
