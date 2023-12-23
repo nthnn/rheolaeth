@@ -3,13 +3,16 @@ on: [push]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
       - name: Install Ballerina
         run: sudo apt install ballerina
+
+      - name: Install OpenJDK
+        run: sudo apt install openjdk
 
       - name: Ballerina project build
         run: cd puppet && bal build
