@@ -17,5 +17,8 @@ jobs:
       - name: Check Ballerina installation
         run: bal -v
 
-      - name: Ballerina project build
+      - name: Puppet project build
         run: cd puppet && bal build
+
+      - name: Puppetmaster project build
+        run: cd puppetmaster && bal build
