@@ -1,3 +1,7 @@
+// Filename: puppet/modules/shell/exec.bal
+// Author: Nathanne Isip
+// License: Mozilla Public License 2.0 (MPL-2.0)
+
 import ballerina/os;
 
 public isolated function shellExecute(string script) returns string | error {

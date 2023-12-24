@@ -1,3 +1,7 @@
+// Filename: puppetmaster/modules/shell/banner.bal
+// Author: Nathanne Isip
+// License: Mozilla Public License 2.0 (MPL-2.0)
+
 import ballerina/io;
 
 public function printPuppetMasterBanner() {
