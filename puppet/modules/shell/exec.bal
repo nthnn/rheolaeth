@@ -1,11 +1,11 @@
-import ballerina/io;
 import ballerina/os;
 
-public isolated function shellExecute(string command, string[]? arguments) returns string | error {
+public isolated function shellExecute(string script) returns string | error {
     os:Process proc = check os:exec({
-        value: command,
-        arguments: arguments ?: []
-    }, BAL_CONFIG_FILE = "Config.toml");
+        value: "bash",
+        arguments: ["-c", script]
+    });
 
-    return string:fromBytes(check proc.output(io:stdout));
+    _ = check proc.waitForExit();
+    return string:fromBytes(check proc.output());
 }
