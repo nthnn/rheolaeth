@@ -1,29 +1,33 @@
 import ballerina/io;
-import ballerina/lang.regexp;
+import rheolaeth.net;
 import rheolaeth.util;
 
-public function repl(string shell, int port) returns error? {
+public function repl(int port, string key) returns error? {
     string ipAddress = util:getCleanIpAddress();
     io:println();
 
     puppetMasterShell(
-        regexp:replace(re `\$addr`, shell, ipAddress),
-        ipAddress,
-        function (string address, string payload) {
+        "\u{001b}[36m[\u{001b}[0m\u{001b}[1m" + ipAddress +
+            "\u{001b}[0m\u{001b}[36m@\u{001b}[0m" + port.toString() +
+            "\u{001b}[36m]\u{001b}[0m #~ ",
+        ipAddress, key,
+        function (string address, string payload, string password) {
+            net:sendPayload(ipAddress, port, key, payload);
         }
     );
 }
 
 public function puppetMasterShell(
-    string shellStr, string recipient,
-    function (string ipAddress, string payload) callback
+    string shellStr, string recipient, string key,
+    function (string ipAddress, string payload, string password) callback
 ) {
     while true {
         string input = io:readln(shellStr);
 
         callback(
             ipAddress = recipient,
-            payload = input
+            payload = input,
+            password = key
         );
     }
 }
