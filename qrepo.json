@@ -3,10 +3,20 @@
 	"author": "nthnn",
 	"git": "https://github.com/nthnn/Rheolaeth",
 	"scripts": {
-		"build": [
+		"puppet-build": [
+			"cd puppetmaster",
 			"bal build"
 		],
-		"rheo": [
+		"puppetmaster-build": [
+			"cd puppetmaster",
+			"bal build"
+		],
+		"puppet": [
+			"cd puppetmaster",
+			"bal run"
+		],
+		"puppetmaster": [
+			"cd puppetmaster",
 			"bal run"
 		]
 	}
