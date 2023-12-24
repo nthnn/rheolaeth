@@ -1,3 +1,3 @@
 # Rheolaeth
 
-Rheolaeth is a remote tool for controlling non-Windows systems' shell via HTTP connection using ESP32.
+Rheolaeth is a remote tool for controlling shell via HTTP connection using another device in network.
